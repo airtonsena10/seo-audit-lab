@@ -18,6 +18,9 @@
   --glow-a: rgba(31, 111, 117, 0.18);
   --glow-b: rgba(90, 130, 180, 0.16);
   --glow-c: rgba(255, 255, 255, 0.7);
+  --font-instrument: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-sora: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-jetbrains: "JetBrains Mono", ui-monospace, monospace;
 }
 
 @theme inline {
@@ -35,9 +38,9 @@
   --color-accent-soft: var(--accent-soft);
   --color-accent-strong: var(--accent-strong);
   --color-paper: var(--paper);
-  --font-sans: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-instrument), ui-serif, Georgia, serif;
-  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  --font-sans: var(--font-sora);
+  --font-display: var(--font-instrument);
+  --font-mono: var(--font-jetbrains);
   --radius-panel: 1rem;
   --radius-control: 0.75rem;
   --shadow-soft: 0 1px 2px rgba(27, 39, 53, 0.04), 0 12px 32px rgba(27, 39, 53, 0.06);
@@ -57,7 +60,7 @@ body {
     linear-gradient(180deg, #f7f9fb 0%, var(--background) 45%, #e8edf2 100%);
   background-attachment: fixed;
   color: var(--foreground);
-  font-family: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-sora);
 }
 
 button,

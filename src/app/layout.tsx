@@ -1,24 +1,5 @@
 import type { Metadata } from "next"
-import { Instrument_Serif, JetBrains_Mono, Sora } from "next/font/google"
 import "./globals.css"
-
-const display = Instrument_Serif({
-  subsets: ["latin"],
-  variable: "--font-instrument",
-  weight: "400",
-})
-
-const body = Sora({
-  subsets: ["latin"],
-  variable: "--font-sora",
-  weight: ["400", "500", "600"],
-})
-
-const mono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains",
-  weight: ["400", "500"],
-})
 
 export const metadata: Metadata = {
   title: "SEO Audit Lab",
@@ -32,7 +13,15 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR" className={`${display.variable} ${body.variable} ${mono.variable}`}>
+    <html lang="pt-BR">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=JetBrains+Mono:wght@400;500&family=Sora:wght@400;500;600&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="antialiased">{children}</body>
     </html>
   )
