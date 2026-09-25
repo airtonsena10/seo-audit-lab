@@ -1,0 +1,176 @@
+@import "tailwindcss";
+
+:root {
+  --background: #eef1f4;
+  --foreground: #1b2735;
+  --muted: #e2e8ee;
+  --muted-foreground: #5f6f80;
+  --border: #d3dce6;
+  --surface: #ffffff;
+  --surface-strong: #1b2735;
+  --success: #1f7a55;
+  --warning: #b06a12;
+  --error: #c0392b;
+  --accent: #1f6f75;
+  --accent-soft: #d7eff0;
+  --accent-strong: #15565b;
+  --paper: #ffffff;
+  --glow-a: rgba(31, 111, 117, 0.18);
+  --glow-b: rgba(90, 130, 180, 0.16);
+  --glow-c: rgba(255, 255, 255, 0.7);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-strong: var(--accent-strong);
+  --color-paper: var(--paper);
+  --font-sans: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-instrument), ui-serif, Georgia, serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  --radius-panel: 1rem;
+  --radius-control: 0.75rem;
+  --shadow-soft: 0 1px 2px rgba(27, 39, 53, 0.04), 0 12px 32px rgba(27, 39, 53, 0.06);
+  --shadow-lift: 0 2px 4px rgba(27, 39, 53, 0.04), 0 18px 40px rgba(27, 39, 53, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background);
+  background-image:
+    radial-gradient(ellipse 70% 50% at 8% -10%, var(--glow-a), transparent 55%),
+    radial-gradient(ellipse 55% 45% at 92% 0%, var(--glow-b), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 50% 110%, var(--glow-c), transparent 60%),
+    linear-gradient(180deg, #f7f9fb 0%, var(--background) 45%, #e8edf2 100%);
+  background-attachment: fixed;
+  color: var(--foreground);
+  font-family: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes soft-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.55;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.animate-rise {
+  animation: rise-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-rise-delay-1 {
+  animation-delay: 0.07s;
+}
+
+.animate-rise-delay-2 {
+  animation-delay: 0.14s;
+}
+
+.animate-rise-delay-3 {
+  animation-delay: 0.21s;
+}
+
+.animate-rise-delay-4 {
+  animation-delay: 0.28s;
+}
+
+.signal-dot {
+  animation: soft-pulse 2.4s ease-in-out infinite;
+}
+
+.btn-loading {
+  background-image: linear-gradient(
+    110deg,
+    var(--accent) 0%,
+    var(--accent) 40%,
+    #2a8f96 50%,
+    var(--accent) 60%,
+    var(--accent) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.35s linear infinite;
+}
+
+.panel {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-panel);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(10px);
+}
+
+.control {
+  border: 1.5px solid color-mix(in srgb, var(--border) 70%, var(--foreground) 30%);
+  border-radius: var(--radius-control);
+  background: var(--paper);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.control:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+  outline: none;
+}
+
+.control:hover {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise,
+  .animate-rise-delay-1,
+  .animate-rise-delay-2,
+  .animate-rise-delay-3,
+  .animate-rise-delay-4,
+  .signal-dot,
+  .btn-loading {
+    animation: none;
+  }
+}
